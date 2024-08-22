@@ -40,8 +40,8 @@ RUN apt-get update \
 RUN catkin_make
 
 # Set ROS-related environment variables
-ARG ROS_MASTER_IP="192.168.1.8"
-ARG ROS_IP="192.168.1.10"
+ARG ROS_MASTER_IP="10.9.0.42"
+ARG ROS_IP="10.9.0.1"
 
 ENV ROS_MASTER_URI=http://${ROS_MASTER_IP}:11311
 ENV ROS_IP=${ROS_IP}
