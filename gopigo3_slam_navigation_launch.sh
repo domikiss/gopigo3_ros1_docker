@@ -1,1 +1,1 @@
-roslaunch gopigo3_navigation gopigo3_slam_navigation
+roslaunch gopigo3_navigation gopigo3_slam_navigation.launch

@@ -24,8 +24,8 @@ SHELL ["/bin/bash", "-c"]
 
 # Create a Catkin workspace, copy the gopigo3 related package contents and build it
 RUN mkdir -p /gopigo_ws/src
-COPY gopigo3 /gopigo_ws/src
-COPY gopigo3_nav_sim /gopigo_ws/src
+COPY gopigo3 /gopigo_ws/src/gopigo3
+COPY gopigo3_nav_sim /gopigo_ws/src/gopigo3_nav_sim
 WORKDIR /gopigo_ws
 
 # Install additional ROS packages used by the GoPiGo3 robot
