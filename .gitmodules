@@ -1,0 +1,6 @@
+[submodule "gopigo3"]
+	path = gopigo3
+	url = https://github.com/domikiss/gopigo3
+[submodule "gopigo3_nav_sim"]
+	path = gopigo3_nav_sim
+	url = https://github.com/domikiss/gopigo3_nav_sim
