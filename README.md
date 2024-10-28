@@ -11,12 +11,9 @@ git submodule init
 git submodule update
 ```
 
-To build the Docker image, issue the following command from the main directory of this repository. Note that you must specify the IP address of the machine running the docker container (ROS_IP) and the IP address of the ROS master (ROS_MASTER_IP) as build arguments.
+To build the Docker image, issue the following command from the main directory of this repository:
 ```
-docker build -f Dockerfile \
-  --build-arg ROS_IP=<IP.of.local.machine> \
-  --build-arg ROS_MASTER_IP=<IP.of.ROS.master> \
-  --target gopigo3 -t ros-noetic-nav:gopigo3 .
+docker build -f Dockerfile --target gopigo3 -t ros-noetic-nav:gopigo3 .
 ```
 
 If you build the image more than once, some dangling (untagged) docker images may be present. You can remove them as follows:
@@ -27,6 +24,14 @@ docker rmi $(docker images -f "dangling=true" -q)
 The Docker image is intended to be used along with another ROS instance having RViz to monitor the navigation tasks and Gazebo to be able to simulate the robot (if a real robot is not available). The navigation functionalities inside a Docker container can be started by the following command:
 ```
 docker run -it --rm --net=host ros-noetic-nav:gopigo3 \
-    bash -c "roslaunch gopigo3_navigation gopigo3_slam_navigation.launch"
+    bash -c "launch.sh -m <IP.of.ROS.master> -l <IP.of.local.machine> \
+    -p gopigo3_navigation -f gopigo3_slam_navigation.launch"
 ``` 
+
+Note that the `launch.sh` bash script is invoked inside the Docker container which has the following options:
+- `-m`: ROS master IP
+- `-l`: Local IP (address of the machine running the docker container)
+- `-p`: ROS package of the launch file (default value: `gopigo3_navigation`)
+- `-f`: Launch file name (default value: `gopigo3_slam_navigation.launch`)
+
 Note that the `--rm` switch removes the created container right after exiting.

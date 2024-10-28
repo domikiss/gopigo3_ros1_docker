@@ -40,16 +40,16 @@ RUN apt-get update \
 RUN catkin_make
 
 # Set ROS-related environment variables
-ARG ROS_MASTER_IP="10.9.0.42"
-ARG ROS_IP="10.9.0.1"
+#ARG ROS_MASTER_IP="10.9.0.42"
+#ARG ROS_IP="10.9.0.1"
 
-ENV ROS_MASTER_URI=http://${ROS_MASTER_IP}:11311
-ENV ROS_IP=${ROS_IP}
-ENV ROS_HOSTNAME=${ROS_IP}
+#ENV ROS_MASTER_URI=http://${ROS_MASTER_IP}:11311
+#ENV ROS_IP=${ROS_IP}
+#ENV ROS_HOSTNAME=${ROS_IP}
 
 # Set up launcher shell script
-COPY gopigo3_slam_navigation_launch.sh /
-RUN chmod 775 /gopigo3_slam_navigation_launch.sh
+COPY launch.sh /
+RUN chmod 775 /launch.sh
 
 # Set up the entrypoint
 COPY gopigo3_ros1_entrypoint.sh /entrypoint.sh
