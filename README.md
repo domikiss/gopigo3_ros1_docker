@@ -24,7 +24,7 @@ docker rmi $(docker images -f "dangling=true" -q)
 The Docker image is intended to be used along with another ROS instance having RViz to monitor the navigation tasks and Gazebo to be able to simulate the robot (if a real robot is not available). The navigation functionalities inside a Docker container can be started by the following command:
 ```
 docker run -it --rm --net=host ros-noetic-nav:gopigo3 \
-    bash -c "launch.sh -m <IP.of.ROS.master> -l <IP.of.local.machine> \
+    bash -c "/launch.sh -m <IP.of.ROS.master> -l <IP.of.local.machine> \
     -p gopigo3_navigation -f gopigo3_slam_navigation.launch"
 ``` 
 
