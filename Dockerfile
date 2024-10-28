@@ -17,7 +17,7 @@ RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
 
 
 ##################################################
-# Overlay image containing GoPiGo3 ROS2 workspace
+# Overlay image containing GoPiGo3 ROS1 workspace
 ##################################################
 FROM nav-dev AS gopigo3
 SHELL ["/bin/bash", "-c"]
