@@ -1,3 +1,5 @@
+echo $0:
+
 # Default values for package and file input parameters
 package="gopigo3_navigation"
 file="gopigo3_slam_navigation.launch"
@@ -10,9 +12,9 @@ do
         p)  package=${OPTARG};;
         f)  file=${OPTARG};;
         m)  
-            rosmaster_ip=${OPTARG}
-            export ROS_MASTER_URI=http://$rosmaster_ip:11311
-            echo "ROS master: $rosmaster_ip"
+            rosmaster_uri=${OPTARG}
+            export ROS_MASTER_URI=$rosmaster_uri
+            echo "ROS master: $rosmaster_uri"
             ;;
         l)  
             local_ip=${OPTARG}
@@ -22,7 +24,6 @@ do
             ;;
     esac
 done
-
 
 shift $((OPTIND-1))
 [ "${1:-}" = "--" ] && shift
